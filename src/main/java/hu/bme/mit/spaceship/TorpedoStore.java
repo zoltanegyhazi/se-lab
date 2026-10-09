@@ -36,20 +36,16 @@ public class TorpedoStore {
      throw new IllegalArgumentException("numberOfTorpedos");
     }
 
-    boolean success = false;
 
     double r = generator.nextDouble();
 
-    if (r >= FAILURE_RATE) {
-      // successful firing
-      this.torpedoCount -= numberOfTorpedos;
-      success = true;
-    } else {
-      // simulated failure
-      success = false;
-    }
-
-    return success;
+     if (r >= FAILURE_RATE) {
+    // successful firing
+    this.torpedoCount -= numberOfTorpedos;
+    return true;
+  }
+  
+  return false;
   }
 
   public boolean isEmpty(){
